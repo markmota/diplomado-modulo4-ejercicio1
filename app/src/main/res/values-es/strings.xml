@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Ejercicio1</string>
+    <string name="activity_main_input_label_password">Contraseña</string>
+    <string name="activity_main_input_label_user">Usuario</string>
+    <string name="activity_main_btn_label_login">Ingresar</string>
+    <string name="activity_main_message_error_login">Acceso incorrecto!</string>
+    <string name="activity_main_message_success_login">Bienvenid@!</string>
+    <string name="activity_main_message_empty_user">El usuario no puede estar vacío!</string>
+    <string name="activity_main_message_empty_pass">El passwor no puede estar vacío!</string>
+</resources>

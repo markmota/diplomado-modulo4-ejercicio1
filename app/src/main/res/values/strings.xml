@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">ejercicio1</string>
+    <string name="app_name">Exercise 1</string>
+    <string name="activity_main_input_label_password">Password</string>
+    <string name="activity_main_input_label_user">User</string>
+    <string name="activity_main_btn_label_login">Login</string>
+    <string name="activity_main_message_error_login">Wrong credentials!</string>
+    <string name="activity_main_message_success_login">Logged!</string>
+    <string name="activity_main_message_empty_user">The user can\'t be empty!</string>
+    <string name="activity_main_message_empty_pass">The password can\'t be empty!</string>
 </resources>

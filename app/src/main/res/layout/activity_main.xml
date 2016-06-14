@@ -26,8 +26,8 @@
             android:src="@drawable/ic_logoingenieria"
             />
         <EditText
-            android:id="@+id/activity_main_user"
-            android:hint="username"
+            android:id="@+id/activity_main_input_user"
+            android:hint="@string/activity_main_input_label_user"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -35,17 +35,14 @@
             android:id="@+id/activity_main_input_password"
             android:inputType="textPassword"
             android:layout_marginTop="16dp"
-            android:layout_below="@+id/activity_main_input_user"
-            android:hint="password"
+            android:hint="@string/activity_main_input_label_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-
 
             <Button
                 android:layout_marginTop="16dp"
                 android:textAllCaps="false"
-                android:text="Login"
+                android:text="@string/activity_main_btn_label_login"
                 android:id="@+id/activity_main_btn_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
