@@ -8,10 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText etUser;
     private EditText etPass;
+    private HashMap<String, String> dataUsers = new HashMap<String, String>();
 
 
     @Override
@@ -48,10 +51,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void validateLogin(String user, String pass) {
-        if(user.equals("unam") && pass.equals("curso"))
+
+        // Obtengo los usuarios disponibles
+        getUsers();
+
+        // Verifico que existan
+        if( dataUsers.get(user)!=null &&  pass.equals(dataUsers.get(user)))
         {
             showMessage(R.string.activity_main_message_success_login);
             Toast.makeText(getApplicationContext(),"Login",Toast.LENGTH_SHORT).show();
+
+
             //Intent intent= new Intent(getApplicationContext(),ActivityDetail.class);
             //intent.putExtra("key_user",usuario);
             //startActivity(intent);
@@ -65,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showMessage(int resourceString) {
         Toast.makeText(getApplicationContext(),resourceString,Toast.LENGTH_SHORT).show();
+    }
+    private void getUsers() {
+        // Por el momento uso un hashmap para guardar los datos de usuarios
+        dataUsers.put("Marduk","marduk");
+        dataUsers.put("Esteban","esteban");
+        dataUsers.put("Zafiro","zafiro");
     }
 
 }
