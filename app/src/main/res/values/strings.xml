@@ -7,4 +7,7 @@
     <string name="activity_main_message_success_login">Logged!</string>
     <string name="activity_main_message_empty_user">The user can\'t be empty!</string>
     <string name="activity_main_message_empty_pass">The password can\'t be empty!</string>
+
+    <string name="activity_home_btn_profile">Profile</string>
+    <string name="activity_home_btn_list">List</string>
 </resources>

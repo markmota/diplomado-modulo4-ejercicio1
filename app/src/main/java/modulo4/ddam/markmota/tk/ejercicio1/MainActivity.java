@@ -60,11 +60,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             showMessage(R.string.activity_main_message_success_login);
             Toast.makeText(getApplicationContext(),"Login",Toast.LENGTH_SHORT).show();
+            // Limpio textos de entrada
+            etPass.setText("");
+            etUser.setText("");
 
-
-            //Intent intent= new Intent(getApplicationContext(),ActivityDetail.class);
-            //intent.putExtra("key_user",usuario);
-            //startActivity(intent);
+            Intent intent= new Intent(getApplicationContext(),HomeActivity.class);
+            intent.putExtra("key_user",user);
+            startActivity(intent);
         }
         else {
             // Limpiamos la contraseña de los editText
