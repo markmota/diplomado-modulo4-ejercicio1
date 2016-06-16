@@ -7,6 +7,13 @@
     <string name="activity_main_message_success_login">Bienvenid@!</string>
     <string name="activity_main_message_empty_user">El usuario no puede estar vacío!</string>
     <string name="activity_main_message_empty_pass">El passwor no puede estar vacío!</string>
+
     <string name="activity_home_btn_profile">Perfil</string>
     <string name="activity_home_btn_list">Lista</string>
+    <string name="activity_home_btn_back">Cerrar sesión</string>
+
+    <string name="fragment_profile_message_null_user">No se recibió información</string>
+    <string name="fragment_list_input_label_list">Elemento a la lista</string>
+    <string name="fragment_list_btn_label_add">Agregar</string>
+
 </resources>

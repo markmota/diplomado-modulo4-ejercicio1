@@ -82,7 +82,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Por el momento uso un hashmap para guardar los datos de usuarios
         dataUsers.put("Marduk","marduk");
         dataUsers.put("Esteban","esteban");
+        dataUsers.put("Aurelio","aurelio");
+        dataUsers.put("Laura","laura");
+        dataUsers.put("Nico","nico");
+        dataUsers.put("Ricardo","ricardo");
+        dataUsers.put("Sandra","sandra");
         dataUsers.put("Zafiro","zafiro");
+
     }
 
 }

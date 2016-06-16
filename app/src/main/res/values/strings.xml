@@ -10,4 +10,10 @@
 
     <string name="activity_home_btn_profile">Profile</string>
     <string name="activity_home_btn_list">List</string>
+    <string name="activity_home_btn_back">Sign out</string>
+
+    <string name="fragment_profile_message_null_user">Information don\'t received</string>
+    <string name="fragment_list_input_label_list">List item</string>
+    <string name="fragment_list_btn_label_add">Add</string>
+
 </resources>
