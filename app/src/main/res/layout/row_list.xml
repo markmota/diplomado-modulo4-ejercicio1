@@ -7,12 +7,14 @@
     <LinearLayout
         android:layout_weight="0.7"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/row_image_view"
+            android:id="@+id/row_list_row_image_view"
+            android:src="@drawable/ic_even_item"
             android:layout_margin="@dimen/margin_l"
             android:layout_width="56dp"
-            android:layout_height="56dp" />
+            android:layout_height="56dp"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 
@@ -25,13 +27,13 @@
             android:layout_weight="1"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:id="@+id/txtItemTitle"
+            android:id="@+id/row_list_txtItemTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <TextView
             android:textSize="15sp"
             android:layout_weight="1"
-            android:id="@+id/txtItemDescription"
+            android:id="@+id/row_list_txtItemDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

@@ -16,4 +16,6 @@
     <string name="fragment_list_input_label_list">List item</string>
     <string name="fragment_list_btn_label_add">Add</string>
 
+    <string name="fragment_list_message_listidTitle">Description</string>
+
 </resources>

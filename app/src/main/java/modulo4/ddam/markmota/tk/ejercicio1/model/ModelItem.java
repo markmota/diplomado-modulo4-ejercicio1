@@ -6,5 +6,5 @@ package modulo4.ddam.markmota.tk.ejercicio1.model;
 public class ModelItem {
     public  String id;
     public String item;
-    public int resourceId;
+    public int imgResourceId;
 }

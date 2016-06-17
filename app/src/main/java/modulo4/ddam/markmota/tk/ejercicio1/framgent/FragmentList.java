@@ -25,12 +25,13 @@ public class FragmentList extends Fragment {
     private ListView listView;
     private List<ModelItem> array = new ArrayList<>();
     private int counter;
-    private boolean isWifi;
+    private boolean evenItem=true;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list,container,false);
+        // Configuracion de la lista de items
         listView = (ListView) view.findViewById(R.id.fragment_list_listItems);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -42,7 +43,7 @@ public class FragmentList extends Fragment {
             }
         });
 
-
+        // Configuracion de edittext y boton para agregar a la lista
         final EditText mItemsText = (EditText) view.findViewById(R.id.fragment_list_inputText);
         view.findViewById(R.id.fragment_list_btnAddItem).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,15 +51,19 @@ public class FragmentList extends Fragment {
                 String itemData = mItemsText.getText().toString();
                 if(!TextUtils.isEmpty(itemData))
                 {
-                    /*ModelItem item =new ModelItem();
+                    // Creamos el objeto (que es un modelo de datos solamente) para que tenga los elementos de la lista
+                    ModelItem item =new ModelItem();
+                    // Llenamos los datos del objeto
                     item.item=itemData;
-                    item.id  = "Description "+counter;
-                    item.resourceId=isWifi?R.drawable.ic_device_signal_wifi_4_bar:R.drawable.ic_action_settings_voice;
+                    item.id  = R.string.fragment_list_message_listidTitle+" "+counter;
+                    item.imgResourceId=evenItem?R.drawable.ic_even_item:R.drawable.ic_odd_item;
+                    // Agregamos el modelItem al array
                     array.add(item);
+
                     listView.setAdapter(new AdapterItemList(getActivity(),array));
-                    isWifi=!isWifi;
+                    evenItem=!evenItem;
                     counter++;
-                    mItemsText.setText("");*/
+                    mItemsText.setText("");
                 }
 
             }

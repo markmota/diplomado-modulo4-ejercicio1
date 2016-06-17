@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import modulo4.ddam.markmota.tk.ejercicio1.framgent.FragmentList;
 import modulo4.ddam.markmota.tk.ejercicio1.framgent.FragmentProfile;
 
 /**
@@ -50,6 +51,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
     // Implementa la funcionalidad del Fragmento de la Lista
     private void changeFragmentB() {
+        getFragmentManager().beginTransaction().replace(R.id.activity_home_fragmentHolder,new FragmentList()).commit();
 
     }
 
