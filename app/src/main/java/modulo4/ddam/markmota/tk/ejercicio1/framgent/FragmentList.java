@@ -1,6 +1,7 @@
 package modulo4.ddam.markmota.tk.ejercicio1.framgent;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import modulo4.ddam.markmota.tk.ejercicio1.DetailActivity;
 import modulo4.ddam.markmota.tk.ejercicio1.R;
 import modulo4.ddam.markmota.tk.ejercicio1.model.ModelItem;
 import modulo4.ddam.markmota.tk.ejercicio1.adapters.AdapterItemList;
@@ -39,7 +41,13 @@ public class FragmentList extends Fragment {
                 AdapterItemList adapter= (AdapterItemList) parent.getAdapter();
                 ModelItem modelItem =adapter.getItem(position);
                 ModelItem modelItem2 = array.get(position);
-                Toast.makeText(getActivity(),modelItem2.item,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),modelItem2.item,Toast.LENGTH_SHORT).show();
+                // Para cargar la activity detail
+                Intent intent= new Intent(parent.getContext(),DetailActivity.class);
+                intent.putExtra("key_detail",modelItem2.item);
+                startActivity(intent);
+
+
             }
         });
 

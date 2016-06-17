@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if( dataUsers.get(user)!=null &&  pass.equals(dataUsers.get(user)))
         {
             showMessage(R.string.activity_main_message_success_login);
-            Toast.makeText(getApplicationContext(),"Login",Toast.LENGTH_SHORT).show();
             // Limpio textos de entrada
             etPass.setText("");
             etUser.setText("");

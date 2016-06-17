@@ -17,4 +17,6 @@
     <string name="fragment_list_btn_label_add">Agregar</string>
 
     <string name="fragment_list_message_listidTitle">Descripción</string>
+    <string name="activity_detail_btn_label_back">Regresar</string>
+    <string name="activity_detail_txt_title">Detalle de elemento de lista</string>
 </resources>
