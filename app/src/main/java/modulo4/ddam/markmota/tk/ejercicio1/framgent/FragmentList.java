@@ -72,6 +72,7 @@ public class FragmentList extends Fragment {
                     evenItem=!evenItem;
                     counter++;
                     mItemsText.setText("");
+
                 }
 
             }
