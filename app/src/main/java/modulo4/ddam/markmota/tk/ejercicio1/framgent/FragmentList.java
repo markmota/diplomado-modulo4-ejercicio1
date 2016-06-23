@@ -63,7 +63,7 @@ public class FragmentList extends Fragment {
                     ModelItem item =new ModelItem();
                     // Llenamos los datos del objeto
                     item.item=itemData;
-                    item.id  = R.string.fragment_list_message_listidTitle+" "+counter;
+                    item.id  = getString(R.string.fragment_list_message_listidTitle)+" "+counter;
                     item.imgResourceId=evenItem?R.drawable.ic_even_item:R.drawable.ic_odd_item;
                     // Agregamos el modelItem al array
                     array.add(item);
