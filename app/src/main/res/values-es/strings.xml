@@ -19,4 +19,9 @@
     <string name="fragment_list_message_listidTitle">Descripción</string>
     <string name="activity_detail_btn_label_back">Regresar</string>
     <string name="activity_detail_txt_title">Detalle de elemento de lista</string>
+    <string name="fragment_list_delete_title">Borrar elemento</string>
+    <string name="fragment_list_delete_message">¿Desea borrar el elemento %s?</string>
+    <string name="activity_register_input_label_user">Usuario</string>
+    <string name="activity_register_input_label_password">Contraseña</string>
+    <string name="activity_register_btn_label_register">Crear nuevo usuario</string>
 </resources>

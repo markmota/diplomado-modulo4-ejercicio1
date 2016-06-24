@@ -20,5 +20,10 @@
 
     <string name="activity_detail_btn_label_back">Back</string>
     <string name="activity_detail_txt_title">List Item Detail</string>
+    <string name="fragment_list_delete_title">Delete item</string>
+    <string name="fragment_list_delete_message">Would you like to delete this element: %s ?</string>
+    <string name="activity_register_input_label_user">user</string>
+    <string name="activity_register_input_label_password">password</string>
+    <string name="activity_register_btn_label_register">Create new user</string>
 
 </resources>

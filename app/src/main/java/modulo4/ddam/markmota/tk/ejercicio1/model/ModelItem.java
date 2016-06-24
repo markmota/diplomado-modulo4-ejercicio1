@@ -15,4 +15,10 @@ public class ModelItem {
         this.description = description;
         this.resourceId = resourceId;
     }
+    public ModelItem( String item, String description, int resourceId) {
+        this.id = id;
+        this.item = item;
+        this.description = description;
+        this.resourceId = resourceId;
+    }
 }
