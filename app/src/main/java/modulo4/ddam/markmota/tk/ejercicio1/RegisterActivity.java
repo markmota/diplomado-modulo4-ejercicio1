@@ -12,7 +12,7 @@ import android.widget.Toast;
 import modulo4.ddam.markmota.tk.ejercicio1.model.ModelUser;
 import modulo4.ddam.markmota.tk.ejercicio1.sql.UserDataSource;
 
-public class ActivityRegister extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     private UserDataSource userDataSource;
 
 

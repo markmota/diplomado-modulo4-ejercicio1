@@ -3,7 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <TextView
+        android:layout_margin="16dp"
+        android:gravity="right"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:id="@+id/activity_home_session_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

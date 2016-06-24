@@ -39,14 +39,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <CheckBox
+            android:layout_marginTop="16dp"
+            android:id="@+id/activity_main_check_remember" android:text="@string/activity_main_check_label_remember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"/>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
             <Button
-                android:layout_marginTop="16dp"
-                android:textAllCaps="false"
-                android:text="@string/activity_main_btn_label_login"
+                android:id="@+id/activity_main_btn_register"
+                android:text="@string/activity_main_btn_label_register"
+                android:visibility="visible"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_weight="1"
+                android:textAllCaps="false" android:text="@string/activity_main_btn_label_login"
                 android:id="@+id/activity_main_btn_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
 
     </LinearLayout>

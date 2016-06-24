@@ -25,5 +25,8 @@
     <string name="activity_register_input_label_user">user</string>
     <string name="activity_register_input_label_password">password</string>
     <string name="activity_register_btn_label_register">Create new user</string>
+    <string name="activity_main_check_label_remember">Remember me</string>
+    <string name="activity_main_btn_label_register">Register</string>
+    <string name="activity_home_message_counter">Session lenght %s seconds</string>
 
 </resources>

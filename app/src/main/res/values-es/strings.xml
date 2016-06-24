@@ -24,4 +24,7 @@
     <string name="activity_register_input_label_user">Usuario</string>
     <string name="activity_register_input_label_password">Contraseña</string>
     <string name="activity_register_btn_label_register">Crear nuevo usuario</string>
+    <string name="activity_main_check_label_remember">Recordar usuario</string>
+    <string name="activity_main_btn_label_register">Registrarse</string>
+    <string name="activity_home_message_counter">Session lenght %s seconds</string>
 </resources>

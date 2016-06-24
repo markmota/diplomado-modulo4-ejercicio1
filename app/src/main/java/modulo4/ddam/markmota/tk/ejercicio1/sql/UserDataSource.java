@@ -32,9 +32,9 @@ public class UserDataSource {
     }
 
 
-    public int checkLog(String username, String password)
+    public int[] checkLog(String username, String password)
     {
-        String[] fields_to_recover = new String[] {MySqliteHelper.USER_COLUMN_LAST_LOG};
+        String[] fields_to_recover = new String[] {MySqliteHelper.COLUMN_ID,MySqliteHelper.USER_COLUMN_LAST_LOG};
         String[] args = new String[] {username,password};
         String where= MySqliteHelper.USER_COLUMN_USER+"=? AND "+
                 MySqliteHelper.USER_COLUMN_PASSWORD+"=?";
@@ -42,11 +42,16 @@ public class UserDataSource {
         if (cursor.moveToNext())
         {
             int last_log = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.USER_COLUMN_LAST_LOG));
+            int user_id = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_ID));
+
+
+            // update las log on database
             updateLastLog(username);
-            return last_log;
+            // return data
+            return new int[] {user_id,last_log};
         }
         else{
-            return  0;
+            return  new int[] {-1,-1};
         }
     }
     private void updateLastLog(String username){

@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".DetailActivity" />
-        <activity android:name=".ActivityRegister"></activity>
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>
