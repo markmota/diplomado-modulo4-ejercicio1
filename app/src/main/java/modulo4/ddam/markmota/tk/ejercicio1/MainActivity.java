@@ -37,7 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Setting click listener to buttons
         findViewById(R.id.activity_main_btn_login).setOnClickListener(this);
         findViewById(R.id.activity_main_btn_register).setOnClickListener(this);
+        checkSavedData();
+    }
 
+    private void checkSavedData() {
         // Getting user from preferences if is the option remember on
         // and setting the text in the layout elements
         int user_id= preferenceUtil.getUserId();
@@ -80,29 +83,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void validateLogin(String user, String pass) {
 
         // Establish connexion to the database and check the user and password
-        int[] user_data=userDataSource.checkLog(user,pass);
+        ModelUser user_data=userDataSource.checkLog(user,pass);
 
-        if(user_data[0]!=-1){
-            showMessage(R.string.activity_main_message_success_login);
-            // Clean layout fields
-            etPass.setText("");
-            etUser.setText("");
+        if(user_data != null){
+            if(user_data.last_log!=null){
+                // Show welcome and last log
+                String welcome= String.format(getString(R.string.activity_main_message_success_login),user_data.last_log);
+                Toast.makeText(getApplicationContext(),welcome,Toast.LENGTH_LONG).show();
+            }
+            else{
+                String welcome= String.format(getString(R.string.activity_main_message_success_login)," First Time.");
+                Toast.makeText(getApplicationContext(),welcome,Toast.LENGTH_LONG).show();
+            }
+
+
 
             // Check if the check box remember user is on, if is I have to remember the user id
             if(rememberCheck.isChecked()){
-                preferenceUtil.saveUserId(user_data[0]);
+                preferenceUtil.saveUserId(user_data.id);
             }
             else{
                 preferenceUtil.saveUserId(0);
             }
             // Now I get the session time form the preference util
             int session_time= preferenceUtil.getSessionTime();
+            // Clean layout fields
+            etPass.setText("");
+            etUser.setText("");
+            rememberCheck.setChecked(false);
+
+
 
             // Start to configure the start of the next  activity
             Intent intent= new Intent(getApplicationContext(),HomeActivity.class);
             // Variables to send to the next activity
             intent.putExtra("user_name",user);
+            intent.putExtra("last_log",user_data.last_log);
             intent.putExtra("session_time",session_time);
+
             startActivity(intent);
 
             // Start service, the session counter
@@ -126,6 +144,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // Showing toast messages
     private void showMessage(int resourceString) {
         Toast.makeText(getApplicationContext(),resourceString,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkSavedData();
     }
 
 }

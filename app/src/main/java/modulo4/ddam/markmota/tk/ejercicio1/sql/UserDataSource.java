@@ -46,7 +46,7 @@ public class UserDataSource {
     }
 
 
-    public int[] checkLog(String username, String password)
+    public ModelUser checkLog(String username, String password)
     {
         String[] fields_to_recover = new String[] {MySqliteHelper.COLUMN_ID,MySqliteHelper.USER_COLUMN_LAST_LOG};
         String[] args = new String[] {username,password};
@@ -55,17 +55,18 @@ public class UserDataSource {
         Cursor cursor =db.query(MySqliteHelper.USER_TABLE_NAME,fields_to_recover,where,args,null,null,null);
         if (cursor.moveToNext())
         {
-            int last_log = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.USER_COLUMN_LAST_LOG));
+            String last_log = cursor.getString(cursor.getColumnIndexOrThrow(MySqliteHelper.USER_COLUMN_LAST_LOG));
             int user_id = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_ID));
 
 
             // update las log on database
             updateLastLog(username);
             // return data
-            return new int[] {user_id,last_log};
+
+            return new ModelUser(user_id,last_log);
         }
         else{
-            return  new int[] {-1,-1};
+            return  null;
         }
     }
     private void updateLastLog(String username){

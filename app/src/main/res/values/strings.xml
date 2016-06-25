@@ -4,7 +4,7 @@
     <string name="activity_main_input_label_user">User</string>
     <string name="activity_main_btn_label_login">Log in</string>
     <string name="activity_main_message_error_login">Wrong credentials!</string>
-    <string name="activity_main_message_success_login">Logged!</string>
+    <string name="activity_main_message_success_login">Welcome back! Last log: %s</string>
     <string name="activity_main_message_empty_user">The user can\'t be empty!</string>
     <string name="activity_main_message_empty_pass">The password can\'t be empty!</string>
 
@@ -30,5 +30,6 @@
     <string name="activity_home_message_counter">Session length %s seconds</string>
     <string name="activity_register_message_existed_user">The user already exists, try another</string>
     <string name="activity_register_message_success_user_created">New user registered :)</string>
+    <string name="fragment_profile_message_last_log">Last session: %s</string>
 
 </resources>

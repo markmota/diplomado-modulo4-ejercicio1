@@ -22,6 +22,7 @@ import modulo4.ddam.markmota.tk.ejercicio1.util.PreferenceUtil;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     public String userName;
+    public String last_log;
     private TextView sessionTime;
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -39,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         // Getting the info sended from the precious activity
         userName=getIntent().getExtras().getString("user_name");
-
+        last_log=getIntent().getExtras().getString("last_log");
         // Linking layout elements with objects
         sessionTime= (TextView) findViewById(R.id.activity_home_session_time);
 
@@ -67,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
     // Implements profile fragment functionality
     private void changeFragmentA() {
-        FragmentProfile f = FragmentProfile.newInstance(userName);
+        FragmentProfile f = FragmentProfile.newInstance(userName,last_log);
         getFragmentManager().beginTransaction().replace(R.id.activity_home_fragmentHolder,f).commit();
     }
     // Implements list fragment functionality
@@ -78,6 +79,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         // Erasing preferences
         PreferenceUtil preferenceUtil= new PreferenceUtil(getApplicationContext());
         preferenceUtil.saveUserId(0);
+        preferenceUtil.saveSessionTime(0);
         finish();
     }
     @Override

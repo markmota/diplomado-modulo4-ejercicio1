@@ -4,7 +4,7 @@
     <string name="activity_main_input_label_user">Usuario</string>
     <string name="activity_main_btn_label_login">Ingresar</string>
     <string name="activity_main_message_error_login">Acceso incorrecto!</string>
-    <string name="activity_main_message_success_login">Bienvenid@!</string>
+    <string name="activity_main_message_success_login">Bienvenid@! Último inicio de sessión: %s</string>
     <string name="activity_main_message_empty_user">El usuario no puede estar vacío!</string>
     <string name="activity_main_message_empty_pass">El passwor no puede estar vacío!</string>
 
@@ -29,4 +29,5 @@
     <string name="activity_home_message_counter">Tiempo de session total: %s seconds</string>
     <string name="activity_register_message_existed_user">The user already exists, try another</string>
     <string name="activity_register_message_success_user_created">Nuevo usuario registrado:)</string>
+    <string name="fragment_profile_message_last_log">Última sesión: %s</string>
 </resources>

@@ -7,6 +7,7 @@ public class ModelUser {
     public int id;
     public String username;
     public String password;
+    public String last_log;
 
 
     public ModelUser(int id, String userName, String password) {
@@ -18,5 +19,10 @@ public class ModelUser {
 
         this.username = userName;
         this.password = password;
+    }
+    public ModelUser(int id,String last_log) {
+
+        this.id = id;
+        this.last_log = last_log;
     }
 }
