@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Setting click listener to buttons
         findViewById(R.id.activity_main_btn_login).setOnClickListener(this);
         findViewById(R.id.activity_main_btn_register).setOnClickListener(this);
+
+        // checking if we have an user id saved
         checkSavedData();
     }
 
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             etUser.setText(userDataSaver.username);
             etPass.setText(userDataSaver.password);
             rememberCheck.setChecked(true);
+            // Hack to skip the layout log
+            validateLogin(userDataSaver.username,userDataSaver.password);
         }
     }
 
