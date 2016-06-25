@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import modulo4.ddam.markmota.tk.ejercicio1.model.ModelUser;
 import modulo4.ddam.markmota.tk.ejercicio1.sql.UserDataSource;
 
@@ -19,10 +18,12 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
 
+        // Connection to de database
         userDataSource = new UserDataSource(getApplicationContext());
 
-        setContentView(R.layout.activity_register);
+
         final EditText mUser = (EditText) findViewById(R.id.activity_register_input_user);
         final EditText mPassword = (EditText) findViewById(R.id.activity_register_input_password);
         final Button mButton= (Button) findViewById(R.id.activity_register_btn_register);
@@ -47,14 +48,16 @@ public class RegisterActivity extends AppCompatActivity {
                     //If user and password are not empty, we add the register to the database
                     // Map data in model User
                     ModelUser modelUser= new ModelUser(mUserName,password);
-                    userDataSource.saveItem(modelUser);
-                    finish();
+                    if(userDataSource.saveItem(modelUser)){
+                        showMessage(R.string.activity_register_message_success_user_created);
+                        finish();
+                    }
+                    else{
+                        showMessage(R.string.activity_register_message_existed_user);
+                    }
+
+
                 }
-
-
-
-
-
 
             }
         });

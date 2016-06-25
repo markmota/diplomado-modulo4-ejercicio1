@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
-//import java.util.HashMap;
-
+import modulo4.ddam.markmota.tk.ejercicio1.model.ModelUser;
 import modulo4.ddam.markmota.tk.ejercicio1.service.ServiceTimer;
 import modulo4.ddam.markmota.tk.ejercicio1.sql.UserDataSource;
 import modulo4.ddam.markmota.tk.ejercicio1.util.PreferenceUtil;
@@ -20,24 +18,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText etUser;
     private EditText etPass;
     private CheckBox rememberCheck;
-    //private HashMap<String, String> dataUsers = new HashMap<String, String>();
     private UserDataSource userDataSource;
     private PreferenceUtil preferenceUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         preferenceUtil= new PreferenceUtil(getApplicationContext());
         userDataSource= new UserDataSource(getApplicationContext());
-        setContentView(R.layout.activity_main);
+
+        // Linking layout elements with objects
         etUser=(EditText) findViewById(R.id.activity_main_input_user);
         etPass=(EditText) findViewById(R.id.activity_main_input_password);
         rememberCheck= (CheckBox) findViewById(R.id.activity_main_check_remember);
+
+        // Setting click listener to buttons
         findViewById(R.id.activity_main_btn_login).setOnClickListener(this);
         findViewById(R.id.activity_main_btn_register).setOnClickListener(this);
 
+        // Getting user from preferences if is the option remember on
+        // and setting the text in the layout elements
+        int user_id= preferenceUtil.getUserId();
+        if(user_id!=0){
+            ModelUser userDataSaver=userDataSource.getUser(user_id);
+            etUser.setText(userDataSaver.username);
+            etPass.setText(userDataSaver.password);
+            rememberCheck.setChecked(true);
+        }
     }
 
+    // This implements the button actions
     @Override
     public void onClick(View v) {
         switch(v.getId()){
@@ -49,101 +61,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
-
-
+    // Sanitising data
     private void checkValues() {
+        // Setting data object from variables
         final String user= etUser.getText().toString();
         final String pass= etPass.getText().toString();
 
-        // Verificamos que los campos no esten vacíos
-
+        // check if fields are no empty
         if(TextUtils.isEmpty(user))
             showMessage(R.string.activity_main_message_empty_user);
         else if(TextUtils.isEmpty(pass))
             showMessage(R.string.activity_main_message_empty_pass);
-        else   //Al no estar vacia comenzamos el proceso de validacion
+        else   //If is not empty we proceed to validate user
+
             validateLogin(user,pass);
-
     }
-
+    // Validating data and starting new activity
     private void validateLogin(String user, String pass) {
-
-        // Obtengo los usuarios disponibles
-        //getUsers();
-
-
-        /*
-        // Verifico que existan
-        if( dataUsers.get(user)!=null &&  pass.equals(dataUsers.get(user)))
-        {
-            showMessage(R.string.activity_main_message_success_login);
-            // Limpio textos de entrada
-            etPass.setText("");
-            etUser.setText("");
-
-            Intent intent= new Intent(getApplicationContext(),HomeActivity.class);
-            intent.putExtra("key_user",user);
-            startActivity(intent);
-        }
-        */
 
         // Establish connexion to the database and check the user and password
         int[] user_data=userDataSource.checkLog(user,pass);
-        if(user_data[0]==-1){
+
+        if(user_data[0]!=-1){
             showMessage(R.string.activity_main_message_success_login);
-            // Limpio textos de entrada
+            // Clean layout fields
             etPass.setText("");
             etUser.setText("");
 
-            // Check if the check box remember user is on, i have to remember the user id
+            // Check if the check box remember user is on, if is I have to remember the user id
             if(rememberCheck.isChecked()){
                 preferenceUtil.saveUserId(user_data[0]);
             }
             else{
-                preferenceUtil.saveUserId(-1);
+                preferenceUtil.saveUserId(0);
             }
-
             // Now I get the session time form the preference util
-            String session_time=preferenceUtil.getSessionTime();
+            int session_time= preferenceUtil.getSessionTime();
 
+            // Start to configure the start of the next  activity
             Intent intent= new Intent(getApplicationContext(),HomeActivity.class);
+            // Variables to send to the next activity
             intent.putExtra("user_name",user);
             intent.putExtra("session_time",session_time);
             startActivity(intent);
 
+            // Start service, the session counter
             Intent service=new Intent(getApplicationContext(), ServiceTimer.class);
+            // Variables to send to the service
             service.putExtra("initial_counter_value",session_time);
             startService(service);
 
         }
         else {
-            // Limpiamos la contraseña de los editText
+            // clean the password in the layout field
             etPass.setText("");
             showMessage(R.string.activity_main_message_error_login);
         }
     }
-    // Send to the register activity
+    // Start activity to the register activity
     private void addUser() {
         Intent intent= new Intent(getApplicationContext(),RegisterActivity.class);
         startActivity(intent);
     }
-
+    // Showing toast messages
     private void showMessage(int resourceString) {
         Toast.makeText(getApplicationContext(),resourceString,Toast.LENGTH_SHORT).show();
     }
-    /*  This is not used any more, because we save the users in a database, but I leave it here for reference proposal
-    private void getUsers() {
-        // Por el momento uso un hashmap para guardar los datos de usuarios
-        dataUsers.put("Marduk","marduk");
-        dataUsers.put("Esteban","esteban");
-        dataUsers.put("Aurelio","aurelio");
-        dataUsers.put("Laura","laura");
-        dataUsers.put("Nico","nico");
-        dataUsers.put("Ricardo","ricardo");
-        dataUsers.put("Sandra","sandra");
-        dataUsers.put("Zafiro","zafiro");
-
-    }*/
 
 }

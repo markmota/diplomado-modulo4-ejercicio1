@@ -10,7 +10,7 @@
 
     <string name="activity_home_btn_profile">Perfil</string>
     <string name="activity_home_btn_list">Lista</string>
-    <string name="activity_home_btn_back">Cerrar sesión</string>
+    <string name="activity_home_btn_back">Borrar sesión</string>
 
     <string name="fragment_profile_message_null_user">No se recibió información</string>
     <string name="fragment_list_input_label_list">Elemento a la lista</string>
@@ -26,5 +26,7 @@
     <string name="activity_register_btn_label_register">Crear nuevo usuario</string>
     <string name="activity_main_check_label_remember">Recordar usuario</string>
     <string name="activity_main_btn_label_register">Registrarse</string>
-    <string name="activity_home_message_counter">Session lenght %s seconds</string>
+    <string name="activity_home_message_counter">Tiempo de session total: %s seconds</string>
+    <string name="activity_register_message_existed_user">The user already exists, try another</string>
+    <string name="activity_register_message_success_user_created">Nuevo usuario registrado:)</string>
 </resources>

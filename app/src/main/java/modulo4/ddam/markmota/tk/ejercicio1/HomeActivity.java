@@ -14,6 +14,7 @@ import android.widget.TextView;
 import modulo4.ddam.markmota.tk.ejercicio1.framgent.FragmentList;
 import modulo4.ddam.markmota.tk.ejercicio1.framgent.FragmentProfile;
 import modulo4.ddam.markmota.tk.ejercicio1.service.ServiceTimer;
+import modulo4.ddam.markmota.tk.ejercicio1.util.PreferenceUtil;
 
 /**
  * Created by markmota on 6/15/16.
@@ -21,7 +22,6 @@ import modulo4.ddam.markmota.tk.ejercicio1.service.ServiceTimer;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     public String userName;
-    private int sessionTimeSaved;
     private TextView sessionTime;
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -35,16 +35,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // inflo la vista
         setContentView(R.layout.activity_home);
-        sessionTime= (TextView) findViewById(R.id.activity_home_session_time);
-        // Obtengo la info enviada por el intent
+
+        // Getting the info sended from the precious activity
         userName=getIntent().getExtras().getString("user_name");
 
+        // Linking layout elements with objects
+        sessionTime= (TextView) findViewById(R.id.activity_home_session_time);
 
-
-
-        // Agrego listeners de click a los botones
+        // Setting click listener to buttons
         findViewById(R.id.activity_home_btnFragmentA).setOnClickListener(this);
         findViewById(R.id.activity_home_btnFragmentB).setOnClickListener(this);
         findViewById(R.id.activity_home_btnBack).setOnClickListener(this);
@@ -62,19 +61,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 changeFragmentB();
                 break;
             case R.id.activity_home_btnBack:
-                finish();
+                eraseSession();
                 break;
         }
     }
-    // Implementa la funcionalidad del Fragmento del Perfil
+    // Implements profile fragment functionality
     private void changeFragmentA() {
         FragmentProfile f = FragmentProfile.newInstance(userName);
         getFragmentManager().beginTransaction().replace(R.id.activity_home_fragmentHolder,f).commit();
     }
-    // Implementa la funcionalidad del Fragmento de la Lista
+    // Implements list fragment functionality
     private void changeFragmentB() {
         getFragmentManager().beginTransaction().replace(R.id.activity_home_fragmentHolder,new FragmentList()).commit();
-
+    }
+    private void eraseSession() {
+        // Erasing preferences
+        PreferenceUtil preferenceUtil= new PreferenceUtil(getApplicationContext());
+        preferenceUtil.saveUserId(0);
+        finish();
     }
     @Override
     protected void onResume() {
@@ -82,21 +86,21 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         IntentFilter filter = new IntentFilter();
         filter.addAction(ServiceTimer.ACTION_SEND_TIMER);
         registerReceiver(broadcastReceiver,filter);
-        Log.d(ServiceTimer.TAG,"OnResume, se reinicia boradcast");
+        Log.d(ServiceTimer.TAG,"OnResume, broadcast restarted");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(ServiceTimer.TAG,"onPause quitando broadcast");
+        Log.d(ServiceTimer.TAG,"onPause quiting broadcast");
         unregisterReceiver(broadcastReceiver);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(ServiceTimer.TAG,"OnDestroy, terminando servicio");
-
+        Log.d(ServiceTimer.TAG,"OnDestroy, ending service");
+        // Stop service counter
         stopService(new Intent(getApplicationContext(),ServiceTimer.class));
 
     }

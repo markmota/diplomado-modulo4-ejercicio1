@@ -20,40 +20,36 @@ public class PreferenceUtil {
     public void saveUserId(int user_id)
     {
         if(user_id>0){
-            sp.edit().putString("user_id",String.valueOf(user_id)).apply();
+            sp.edit().putInt("user_id",user_id).apply();
         }
         else{
-            sp.edit().putString("user_id","-1").apply();
+            sp.edit().putInt("user_id",0).apply();
         }
     }
-    public String getUserId()
+    public int getUserId()
     {
-        String user_id=sp.getString("user_id",null);
+         int user_id=sp.getInt("user_id",0);
 
-        if(TextUtils.isEmpty(user_id) )
-            return null;
         return user_id;
 
     }
 
     public void saveSessionTime(int session_time)
     {
-        if(session_time>0){
-            sp.edit().putString("session_time",String.valueOf(session_time)).apply();
+        if(session_time!=0){
+            sp.edit().putInt("session_time",session_time).apply();
         }
         else{
-            sp.edit().putString("session_time","0").apply();
+            sp.edit().putInt("session_time",0).apply();
         }
     }
-    public String getSessionTime()
+    public int getSessionTime()
     {
-        String session_time=sp.getString("session_time",null);
-
-        if(TextUtils.isEmpty(session_time) )
-            return "0";
+        int session_time=sp.getInt("session_time",0);
         return session_time;
 
     }
+
 
 
 

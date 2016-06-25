@@ -37,7 +37,7 @@ public class ServiceTimer  extends Service{
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         // getting the extras  to start the counter with the data saved in the preferences
-        counter=intent.getExtras().getInt("initial_counter_value");
+        counter=intent.getExtras().getInt("initial_counter_value",0);
         Log.d(TAG,"OnstartCommand called");
         return START_STICKY;
     }

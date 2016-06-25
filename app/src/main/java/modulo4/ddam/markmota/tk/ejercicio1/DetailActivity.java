@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.Random;
+
 
 /**
  * Created by markmota on 6/17/16.
@@ -19,34 +19,31 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @Override
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        int idImage;
-
         super.onCreate(savedInstanceState);
-        // inflo la vistaSe me
         setContentView(R.layout.activity_detail);
-        // Obtengo la info enviada por el intent
+
+
+
+        // Getting the info sended from the precious activity
         detail=getIntent().getExtras().getString("key_detail");
 
-        // Obtengo los elementos a modificar del laypout
+        // Linking layout elements with objects
         TextView txtDetail= (TextView) findViewById(R.id.activity_detail_txtDetail);
         ImageView imgPicture= (ImageView) findViewById(R.id.activity_detail_imgPicture);
-        // Obtengo la imagen aleatoria
+
+        // Getting a random image
+        int idImage;
         String imgName="ic_random_"+rndNumber;
         idImage=this.getResources().getIdentifier(imgName,"drawable", this.getPackageName());
         if(idImage==0){
             // DEFAULT IMAGE
             idImage= R.drawable.ic_random_1;
         }
-
-        // Coloco los datos al layout
-
+        // Setting data in the layput
         imgPicture.setImageResource(idImage);
         txtDetail.setText(detail);
-
-        // Agrego listener de click al boton de regresar
+        // Setting click listener to buttons
         findViewById(R.id.activity_detail_btnBack).setOnClickListener(this);
-
-
     }
 
     @Override
@@ -57,4 +54,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+
+
 }

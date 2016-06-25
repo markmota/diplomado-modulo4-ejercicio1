@@ -52,11 +52,11 @@ public class FragmentList extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AdapterItemList adapter= (AdapterItemList) parent.getAdapter();
                 ModelItem modelItem =adapter.getItem(position);
-                ModelItem modelItem2 = array.get(position);
-                //Toast.makeText(getActivity(),modelItem2.item,Toast.LENGTH_SHORT).show();
-                // Para cargar la activity detail
+
+                //Toast.makeText(getActivity(),modelItem.item,Toast.LENGTH_SHORT).show();
+                // Load activity detail
                 Intent intent= new Intent(parent.getContext(),DetailActivity.class);
-                intent.putExtra("key_detail",modelItem2.item);
+                intent.putExtra("key_detail",modelItem.item);
                 startActivity(intent);
 
 

@@ -25,7 +25,7 @@ public class MySqliteHelper extends SQLiteOpenHelper {
             "("+COLUMN_ID+" integer primary key autoincrement,"+
             USER_COLUMN_USER+" text not null,"+
             USER_COLUMN_PASSWORD+ " text not null,"+
-            USER_COLUMN_LAST_LOG+" integer null)";
+            USER_COLUMN_LAST_LOG+" text null)";
 
     private static final String USER_DROP_TABLE ="drop table "+USER_TABLE_NAME;
 
